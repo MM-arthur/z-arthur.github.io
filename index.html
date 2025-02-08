@@ -142,11 +142,11 @@
         }
         .divider {
             margin: 0 5px;
-            color: #007bff; /* 你可以根据需要调整颜色 */
+            color: #007bff;
         }
         .divider2 {
             margin: 0 5px;
-            color: #007bff; /* 你可以根据需要调整颜色 */
+            color: #007bff;
         }
 
 
@@ -184,7 +184,7 @@
         /* 移动端样式 */
         @media (max-width: 767px) {
             .link-box {
-                touch-action: manipulation; /* 禁用触摸操作默认行为 */
+                touch-action: manipulation;
                 background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
@@ -200,6 +200,22 @@
                 color: white;
             }
         }
+        .company-link{
+            text-decoration: underline;
+            text-decoration-color: #007bff91;
+        }
+        .highlighted {
+            font-weight: bold; /* 加粗字体 */
+            background: #007bff12;
+            padding: 10px; /* 适当的内边距 */
+            border-radius: 8px; /* 圆角边框 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 添加文字阴影 */
+        }
+        .fas.fa-arrow-right {
+            margin: 0 2px; /* 添加箭头图标与文本的间距 */
+            color: #007BFF; /* 设置箭头图标颜色 */
+        }
+
     </style>
 </head>
 <body>
@@ -225,7 +241,9 @@
         <h2><i class="fas fa-briefcase"></i>EXPERIENCE <i class="toggle-icon fas fa-caret-down"></i></h2>
         <ul>
             <li>
-                <strong>Siemens Mobility Rail Equipment (Tianjin) Co., Ltd. <span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Service Engineer</strong><br>
+                <a href="https://www.mobility.siemens.com/cn/zh.html" class="company-link" target="_blank">
+                    <strong>Siemens Mobility Rail Equipment (Tianjin) Co., Ltd.<span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Service Engineer</strong><br>
+                </a>
                 <em>Jul. 2024 - Present</em><br>
                 Job Responsibilities: Full-stack development 
                 <span class="divider2"> & </span> 
@@ -235,14 +253,21 @@
                 <span class="divider2"> & </span> 
                 Bilingual work environment in Chinese and English
                 <ul>
-                    <li>Responsible for the construction of the Lightweight Business Process Management (L-BPM) System, independently completing including: solution research, design (system architecture design, data model design, function design, UI design, technology selection), agile development plan, coding (full-stack development of front and back ends, technical difficulties resolution, system integration), testing, deployment and maintenance, user support, result demonstration, and software copyright. The full link implementation of L-BPM system.</li>
+                    <li class="highlighted">Responsible for the construction of the Lightweight Business Process Management (L-BPM) System, independently completing (with AIs support) including: 
+                        solution research, design (system architecture design, data model design, function design, UI design, technology selection), 
+                        agile development plan, coding (full-stack development of front and back ends, technical difficulties resolution, system integration), 
+                        testing, deployment and maintenance, user support, result demonstration, and software copyright. 
+                        The full link implementation of L-BPM system.
+                    </li>
                     <li>Order Management Service (OMS) System development and maintenance: Based on the Mendix low-code platform solution.</li>
-                    <li>Software tool development: Based on JavaScript, VBA, Python with AI tools to assist in developing automation tools that support colleagues work.</li>
+                    <li>Software tool development: Based on JavaScript, VBA, Python with AIs to assist in developing automation tools that support colleagues work.</li>
                     <li>Transactional work & Routine work: IT asset management and maintenance, user support, etc. English as the working language, dual reporting to SMO IT APAC.</li>
                 </ul>
             </li>
             <li>
-                <strong>China Bohai Bank <span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Development Assistant</strong><br>
+                <a href="https://www.cbhb.com.cn/cbhbank/index/index.shtml" class="company-link" target="_blank">
+                    <strong>China Bohai Bank Co., Ltd.<span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Development Assistant</strong><br>
+                </a>
                 <em>Jul. 2022 - Jul. 2024</em><br>
                 Job responsibilities: Front-end development 
                 <span class="divider2"> & </span>
@@ -252,12 +277,14 @@
                 <ul>
                     <li>Credit Approval Annual Report Project development: A front-end and back-end separation project. The front-end is based on the Vue framework, with a local runtime environment of Node, packaged and deployed to the Nginx server through webpack, the mobile front-end page is Alibaba mPaaS solution, and the PC front-end page is a conventional web solution, development languages include HTML, CSS, JavaScript, TypeScript, through various optimization methods and factory design patterns to achieve sections display of charts/tables/text, and to achieve various form interaction methods, various file type uploads, mobile page adaptation, and box model layout adaptation; The back-end is based on the Spring Boot framework, integrated Java runtime environment and Maven packaging server through IDEA, and deployment to microservices server. MySQL as Database. Development languages include Java, SQL, and common Linux commands.</li>
                     <li>Financial Face-to-Face Underwriting Project development: Focus on login logic processing, sensitive information processing, and browser development debugging process.</li>
-                    <li>Project management: Requirement docking -> Workload assessment -> Interface design -> Technical implementation plan (UI, front-end technical plan, back-end technical plan) -> Development process management -> Test (Quality) -> Deploy</li>
+                    <li>Project management: Requirement docking <i class="fas fa-arrow-right"></i> Workload assessment <i class="fas fa-arrow-right"></i> Interface design <i class="fas fa-arrow-right"></i> Technical implementation plan (UI, front-end technical plan, back-end technical plan) <i class="fas fa-arrow-right"></i> Development process management <i class="fas fa-arrow-right"></i> Test (Quality) <i class="fas fa-arrow-right"></i> Deploy</li>
                     <li>Transactional work & Routine work: Familiar with financial knowledge such as deposit, loan, and remittance, as well as micro/macroeconomic curves, other financial knowledge.</li>
                 </ul>
             </li>
             <li>
-                <strong>(Internship) Meituan <span class="divider"> | </span> In-store Business Group <span class="divider"> | </span> Backend Development Engineer (Java)</strong><br>
+                <a href="https://www.meituan.com/" class="company-link" target="_blank">
+                    <strong>(Internship) Meituan <span class="divider"> | </span> In-store Business Group <span class="divider"> | </span> Backend Development Engineer (Java)</strong><br>
+                </a>
                 <em>May 2021 – Jul. 2021</em><br>
                 Job responsibilities: Back-end development
                 <ul>
@@ -272,17 +299,30 @@
         <h2><i class="fas fa-graduation-cap"></i>EDUCATION <i class="toggle-icon fas fa-caret-down"></i></h2>
         <ul>
             <li>
-                <strong>Tianjin University <span class="divider"> | </span> Tianjin International Engineering Institute</strong><br>
+                <a href="https://www.tju.edu.cn/" class="company-link" target="_blank">
+                    <strong>Tianjin University <span class="divider"> | </span> Tianjin International Engineering Institute</strong><br>
+                </a>  
                 <em>Sep. 2019 – Jun. 2022</em><br>
-                Master of Electronic and Communication Engineering
+                Master of Electronic and Communication Engineering<br>Titre d'Ingénieur en Ingénierie Electronique (Master of Science in Engineering in Electronics Engineering)<br>
                 <ul>
-                    <li>Obtained Master Degree and French Engineer Diploma (TIEI has passed the French Accreditation Board for Engineering (CTI) certification).</li>
+                    <li>Obtained Master Degree and French Engineer Diploma 
+                        <a href="https://tiei.tju.edu.cn/" class="company-link" target="_blank">
+                            (TIEI passed the French Accreditation Board for Engineering (CTI) certification.)
+                        </a> 
+                        </li>
+                    <li class="highlighted">Research on Speech Enhancement based on Deep Learning algorithm.
+                        (Transformer, the core algorithm of LLMs, is an algorithm within deep learning field. 
+                        In my research, I utilized CNN and LSTM to train neural network models. 
+                        Implemented using Keras in Python and trained on two GPUs.)
+                        Publish a research paper as the first author (SCI Indexed). 
+                        Publish a research paper (EI Indexed) and Granted a National Invention Patent as the second author (with my advisor Prof.Zhang as the primary inventor).</li>
                     <li>Awarded the Excellent Graduate of Tianjin University, First-Class Scholarship of Tianjin University (3 times), Excellent Volunteer, Triple-A Student and so on.</li>
-                    <li>Research on speech enhancement based on deep learning. Publish a research paper as the first author (SCI Indexed). Publish a research paper (EI Indexed) and Granted a National Invention Patent as the second author (with my advisor as the primary inventor).</li>
                 </ul>
             </li>
             <li>
-                <strong>Shenyang Jianzhu University <span class="divider"> | </span> School of Electrical and Control Engineering</strong><br>
+                <a href="https://www.sjzu.edu.cn/" class="company-link" target="_blank">
+                    <strong>Shenyang Jianzhu University <span class="divider"> | </span> School of Electrical and Control Engineering</strong><br>
+                </a>
                 <em>Sep. 2015 – Jun. 2019</em><br>
                 Bachelor of Building Electrical and Intelligent
                 <ul>
@@ -328,9 +368,9 @@
     <div class="section">
         <h2><i class="fas fa-brain"></i>METHODOLOGY <i class="toggle-icon fas fa-caret-down"></i></h2>
         <ul>
-            <li>Constructive Work Methodology: Establishing target keywords -> Research and learning -> Reporting -> Plan proposal -> Reporting -> Implementation -> Node reporting -> Adjusting goals -> Reporting -> Presentation of results</li>
-            <li>Transactional Work & Routine Work Methodology: Establishing expected outcomes -> Detail improvement -> results</li>
-            <li>Communication Skills Methodology: Determine the perspectives of different duty of colleagues-> Aligning -> Clarifying plans and milestone -> meeting minutes with clarifying responsible and executing objects</li>
+            <li>Constructive Work Methodology: Establishing target keywords <i class="fas fa-arrow-right"></i> Research and learning <i class="fas fa-arrow-right"></i> Reporting <i class="fas fa-arrow-right"></i> Plan proposal <i class="fas fa-arrow-right"></i> Reporting <i class="fas fa-arrow-right"></i> Implementation <i class="fas fa-arrow-right"></i> Node reporting <i class="fas fa-arrow-right"></i> Adjusting goals <i class="fas fa-arrow-right"></i> Reporting <i class="fas fa-arrow-right"></i> Presentation of results</li>
+            <li>Transactional Work & Routine Work Methodology: Establishing expected outcomes <i class="fas fa-arrow-right"></i> Detail improvement <i class="fas fa-arrow-right"></i> results </li>
+            <li>Communication Skills Methodology: Determine the perspectives of different duty of colleagues<i class="fas fa-arrow-right"></i> Aligning <i class="fas fa-arrow-right"></i> Clarifying plans and milestone <i class="fas fa-arrow-right"></i> meeting minutes with clarifying responsible and executing objects</li>
         </ul>
     </div>
 
