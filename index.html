@@ -3,46 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Resume</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
-            background-color: #f8f8f8;
+            background: linear-gradient(to right, #f8f8f8, #e0e0e0);
             color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .header {
             text-align: center;
-            padding-bottom: 20px;
+            padding: 40px 20px;
             border-bottom: 2px solid #eee;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
         }
         .header h1 {
             margin: 0;
-            font-size: 28px;
-            color: #444;
+            font-size: 48px;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f2fe, 0 0 40px #00f2fe, 0 0 50px #00f2fe, 0 0 60px #00f2fe, 0 0 70px #00f2fe;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #4facfe, 0 0 40px #4facfe, 0 0 50px #4facfe, 0 0 60px #4facfe, 0 0 70px #4facfe, 0 0 80px #4facfe;
+            }
         }
         .contact-info {
             text-align: center;
             margin-top: 10px;
-            font-size: 14px;
+            font-size: 16px;
             color: #777;
         }
         .section {
-            margin-top: 20px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+        }
+        .section.collapsed {
+            max-height: 50px;
+            padding-top: 0px;
+            padding-right: 20px;
+            padding-bottom: 15px;
+            padding-left: 20px;
         }
         .section h2 {
             border-bottom: 2px solid #444;
             padding-bottom: 5px;
-            font-size: 22px;
+            font-size: 26px;
             color: #444;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section h2 .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        .section.collapsed h2 .toggle-icon {
+            transform: rotate(-90deg);
         }
         .section ul {
             list-style-type: none;
@@ -52,11 +83,11 @@
             margin-bottom: 20px;
         }
         .section ul li strong {
-            font-size: 18px;
+            font-size: 20px;
             color: #555;
         }
         .section ul li em {
-            font-size: 14px;
+            font-size: 16px;
             color: #777;
         }
         .section ul li ul {
@@ -66,7 +97,7 @@
         }
         .section ul li ul li {
             margin-bottom: 10px;
-            font-size: 16px;
+            font-size: 18px;
             color: #666;
         }
         a {
@@ -109,30 +140,100 @@
             80% { opacity: 1; }
             100% { opacity: 0; }
         }
+        .divider {
+            margin: 0 5px;
+            color: #007bff; /* 你可以根据需要调整颜色 */
+        }
+        .divider2 {
+            margin: 0 5px;
+            color: #007bff; /* 你可以根据需要调整颜色 */
+        }
+
+
+
+        .link-box {
+            display: flex;
+            align-items: center;
+            border: 2px solid #007bff63;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .link-icon {
+            font-size: 40px;
+            margin-right: 15px;
+            color: #007BFF;
+        }
+        .link-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        /* PC 端样式 */
+        @media (min-width: 768px) {
+            .link-box:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            }
+        }
+
+        /* 移动端样式 */
+        @media (max-width: 767px) {
+            .link-box {
+                touch-action: manipulation; /* 禁用触摸操作默认行为 */
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            }
+            .link-box:active {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                color: white;
+            }
+            .link-box:active .link-icon,
+            .link-box:active .link-text {
+                color: white;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="animation-overlay">
+    <!-- <div class="animation-overlay">
         <div class="animation-text" style="animation-delay: 0.5s;">Idea</div>
         <div class="animation-text" style="animation-delay: 2s;">Passion</div>
         <div class="animation-text" style="animation-delay: 4s;">Technology</div>
-    </div>
+    </div> -->
 
+    <!--标题-->
     <div class="header">
-        <h1>Z-Arthur</h1>
+        <h1>Wang Z Y</h1>
         <div class="contact-info">
-            <p>Age: 28</p>
+            <p><i class="fas fa-envelope"></i> 824803007@qq.com</p>
+            <p><i class="fab fa-weixin"></i> Arthur-zxxm</p>
+            <p><i class="fas fa-birthday-cake"></i> Age: 28</p>
         </div>
     </div>
 
+    <!--EXPERIENCE-->
     <div class="section">
-        <h2>EXPERIENCE</h2>
+        <h2><i class="fas fa-briefcase"></i>EXPERIENCE <i class="toggle-icon fas fa-caret-down"></i></h2>
         <ul>
             <li>
-                <strong>Siemens Mobility Rail Equipment (Tianjin) Co., Ltd. | IT Department | IT Service Engineer</strong><br>
+                <strong>Siemens Mobility Rail Equipment (Tianjin) Co., Ltd. <span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Service Engineer</strong><br>
                 <em>Jul. 2024 - Present</em><br>
-                Job Responsibilities: Full-stack development / Low-code development / IT department-related transactional work / Bilingual work environment in Chinese and English
+                Job Responsibilities: Full-stack development 
+                <span class="divider2"> & </span> 
+                Low-code development 
+                <span class="divider2"> & </span> 
+                IT department-related transactional work 
+                <span class="divider2"> & </span> 
+                Bilingual work environment in Chinese and English
                 <ul>
                     <li>Responsible for the construction of the Lightweight Business Process Management (L-BPM) System, independently completing including: solution research, design (system architecture design, data model design, function design, UI design, technology selection), agile development plan, coding (full-stack development of front and back ends, technical difficulties resolution, system integration), testing, deployment and maintenance, user support, result demonstration, and software copyright. The full link implementation of L-BPM system.</li>
                     <li>Order Management Service (OMS) System development and maintenance: Based on the Mendix low-code platform solution.</li>
@@ -141,9 +242,13 @@
                 </ul>
             </li>
             <li>
-                <strong>China Bohai Bank | IT Department | IT Development Assistant</strong><br>
+                <strong>China Bohai Bank <span class="divider"> | </span> IT Department <span class="divider"> | </span> IT Development Assistant</strong><br>
                 <em>Jul. 2022 - Jul. 2024</em><br>
-                Job responsibilities: Front-end development / Back-end development / Project management
+                Job responsibilities: Front-end development 
+                <span class="divider2"> & </span>
+                Back-end development 
+                <span class="divider2"> & </span> 
+                Project management
                 <ul>
                     <li>Credit Approval Annual Report Project development: A front-end and back-end separation project. The front-end is based on the Vue framework, with a local runtime environment of Node, packaged and deployed to the Nginx server through webpack, the mobile front-end page is Alibaba mPaaS solution, and the PC front-end page is a conventional web solution, development languages include HTML, CSS, JavaScript, TypeScript, through various optimization methods and factory design patterns to achieve sections display of charts/tables/text, and to achieve various form interaction methods, various file type uploads, mobile page adaptation, and box model layout adaptation; The back-end is based on the Spring Boot framework, integrated Java runtime environment and Maven packaging server through IDEA, and deployment to microservices server. MySQL as Database. Development languages include Java, SQL, and common Linux commands.</li>
                     <li>Financial Face-to-Face Underwriting Project development: Focus on login logic processing, sensitive information processing, and browser development debugging process.</li>
@@ -152,7 +257,7 @@
                 </ul>
             </li>
             <li>
-                <strong>(Internship) Meituan | In-store Business Group | Backend Development Engineer (Java)</strong><br>
+                <strong>(Internship) Meituan <span class="divider"> | </span> In-store Business Group <span class="divider"> | </span> Backend Development Engineer (Java)</strong><br>
                 <em>May 2021 – Jul. 2021</em><br>
                 Job responsibilities: Back-end development
                 <ul>
@@ -162,29 +267,12 @@
         </ul>
     </div>
 
+    <!--EDUCATION-->
     <div class="section">
-        <h2>SKILLS</h2>
-        <ul>
-            <li>IT Technical Blog (Language: Chinese): <a href="https://blog.csdn.net/qq_40550384" target="_blank">https://blog.csdn.net/qq_40550384</a></li>
-            <li>Resume Supplement (Language: Chinese): <a href="https://blog.csdn.net/qq_40550384/article/details/132668097" target="_blank">https://blog.csdn.net/qq_40550384/article/details/132668097</a></li>
-            <li>GitHub (Language: English): <a href="https://github.com/MM-arthur" target="_blank">MM-arthur (MM-arthur) · GitHub</a></li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>METHODOLOGY</h2>
-        <ul>
-            <li>Constructive Work Methodology: Establishing target keywords -> Research and learning -> Reporting -> Plan proposal -> Reporting -> Implementation -> Node reporting -> Adjusting goals -> Reporting -> Presentation of results</li>
-            <li>Transactional Work & Routine Work Methodology: Establishing expected outcomes -> Detail improvement -> results</li>
-            <li>Communication Skills Methodology: Determine the perspectives of different duty of colleagues-> Aligning -> Clarifying plans and milestone -> meeting minutes with clarifying responsible and executing objects</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>EDUCATION</h2>
+        <h2><i class="fas fa-graduation-cap"></i>EDUCATION <i class="toggle-icon fas fa-caret-down"></i></h2>
         <ul>
             <li>
-                <strong>Tianjin University | Tianjin International Engineering Institute</strong><br>
+                <strong>Tianjin University <span class="divider"> | </span> Tianjin International Engineering Institute</strong><br>
                 <em>Sep. 2019 – Jun. 2022</em><br>
                 Master of Electronic and Communication Engineering
                 <ul>
@@ -194,7 +282,7 @@
                 </ul>
             </li>
             <li>
-                <strong>Shenyang Jianzhu University | School of Electrical and Control Engineering</strong><br>
+                <strong>Shenyang Jianzhu University <span class="divider"> | </span> School of Electrical and Control Engineering</strong><br>
                 <em>Sep. 2015 – Jun. 2019</em><br>
                 Bachelor of Building Electrical and Intelligent
                 <ul>
@@ -204,6 +292,57 @@
             </li>
         </ul>
     </div>
+
+    <!--SKILLS-->
+    <div class="section">
+        <h2><i class="fas fa-tools"></i>SKILLS <i class="toggle-icon fas fa-caret-down"></i></h2>
+        <ul>
+            <li>
+                <a href="https://blog.csdn.net/qq_40550384" target="_blank">
+                    <div class="link-box">
+                        <i class="fab fa-blogger-b link-icon"></i>
+                        <span class="link-text">IT Technical Blog (Language: Chinese)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.csdn.net/qq_40550384/article/details/132668097" target="_blank">
+                    <div class="link-box">
+                        <i class="fas fa-file-alt link-icon"></i>
+                        <span class="link-text">Resume Supplement (Language: Chinese)</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/MM-arthur" target="_blank">
+                    <div class="link-box">
+                        <i class="fab fa-github link-icon"></i>
+                        <span class="link-text">GitHub Project (Language: English)</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--METHODOLOGY-->
+    <div class="section">
+        <h2><i class="fas fa-brain"></i>METHODOLOGY <i class="toggle-icon fas fa-caret-down"></i></h2>
+        <ul>
+            <li>Constructive Work Methodology: Establishing target keywords -> Research and learning -> Reporting -> Plan proposal -> Reporting -> Implementation -> Node reporting -> Adjusting goals -> Reporting -> Presentation of results</li>
+            <li>Transactional Work & Routine Work Methodology: Establishing expected outcomes -> Detail improvement -> results</li>
+            <li>Communication Skills Methodology: Determine the perspectives of different duty of colleagues-> Aligning -> Clarifying plans and milestone -> meeting minutes with clarifying responsible and executing objects</li>
+        </ul>
+    </div>
+
+    <script>
+        document.querySelectorAll('.section h2').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                section.classList.toggle('collapsed');
+            });
+        });
+    </script>
+
 </body>
 </html>
 
